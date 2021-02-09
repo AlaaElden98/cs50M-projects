@@ -3,11 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 import { Timer } from "./src/screens/Timer";
 export default class App extends React.Component {
   render() {
-    return (
-      <View style={styles.container}>
-        <Timer />
-      </View>
-    );
+    return <Timer />;
   }
 }
 

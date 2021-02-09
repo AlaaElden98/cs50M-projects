@@ -1,1 +1,2 @@
-export vibrate from './vibrate'
+export vibrate from "./vibrate";
+export { formatTimer } from "./formatTimer";

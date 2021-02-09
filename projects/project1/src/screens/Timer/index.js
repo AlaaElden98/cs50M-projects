@@ -4,21 +4,22 @@ import { TimerCountDown } from "../../components/TimerCountDown";
 import { AppButton } from "../../components/AppButton";
 import styles from "./styles";
 export const Timer = (props) => {
+  let time = 25 * 60;
   return (
     <View style={styles.container}>
-      <TimerCountDown />
+      <TimerCountDown time={time} />
       <View style={styles.buttonWrapper}>
         <AppButton
           title="Start"
-          clickHandler={() => console.log("StartPressed")}
+          clickHandler={() => ((time = 25 * 60), console.log(time))}
         />
         <AppButton
           title="Stop"
-          clickHandler={() => console.log("StopPressed")}
+          clickHandler={() => ((time = 0), console.log(time))}
         />
         <AppButton
           title="Reset"
-          clickHandler={() => console.log("ResetPressed")}
+          clickHandler={() => ((time = 25 * 60), console.log(time))}
         />
       </View>
     </View>

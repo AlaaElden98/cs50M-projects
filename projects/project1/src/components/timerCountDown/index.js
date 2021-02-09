@@ -1,8 +1,9 @@
 import React from "react";
 import { Text, View } from "react-native";
 import { formatTimer } from "../../../utils";
+
 export const TimerCountDown = (props) => {
-  [sec, setSec] = React.useState(props.time ? props.time : 25 * 60);
+  [sec, setSec] = React.useState(props.time);
   let interval;
   React.useEffect(() => {
     interval = setInterval(() => {

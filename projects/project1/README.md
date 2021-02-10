@@ -82,6 +82,10 @@ Snack at [@jhhayashi/project1-solution](https://snack.expo.io/@jhhayashi/project
 
 ## My Solution
 
--if you want to see my implementation,just explore the project1 folder.
--if want run the app,clone/download the code,connect a device or run an emulator,then run the following command
-`expo start`
+If you want to see my implementation, just explore the project1 folder. 
+
+if want to run the app :
+1. clone/download the code
+2. connect a device or run an emulator
+3. open the terminal in project1 folder 
+4. run the following command `expo start`

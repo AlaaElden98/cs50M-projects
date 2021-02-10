@@ -4,12 +4,14 @@ import { formatTimer, vibration } from "../../../utils";
 import styles from "./styles";
 
 export function Timer(props) {
-  const [sec, setSec] = React.useState(8);
+  const WORK_TIME = 25 * 60; //25 min * 60 sec
+  const REST_TIME = 5 * 60; // 5 min * 60 sec
+  const [sec, setSec] = React.useState(WORK_TIME);
   const [timerIsRunning, setTimerIsRunning] = React.useState(false);
   const [interval, setInter] = React.useState();
   const [isWorkTime, setIsWorkTime] = React.useState(true);
-  const WORK_TIME = 8;
-  const REST_TIME = 5;
+
+  //Switch the timer and vibrate when reach zero
   React.useEffect(() => {
     if (sec === 0) {
       vibration();
@@ -27,18 +29,16 @@ export function Timer(props) {
     setSec((prevSecond) => prevSecond - 1);
   };
 
-  function startStopHandler() {
-    if (timerIsRunning) {
-      clearInterval(interval);
-      setTimerIsRunning(false);
-    } else {
-      setInter(setInterval(deacreaseSeconds, 1000));
-      setTimerIsRunning(true);
-    }
+  function startHandler() {
+    if (!timerIsRunning) setInter(setInterval(deacreaseSeconds, 1000));
+    setTimerIsRunning(true);
+  }
+  function stopHandler() {
+    clearInterval(interval);
+    setTimerIsRunning(false);
   }
   function resetHandler() {
-    startStopHandler();
-    setTimerIsRunning(true);
+    stopHandler();
     if (isWorkTime) {
       setSec(WORK_TIME);
     } else {
@@ -50,9 +50,15 @@ export function Timer(props) {
       <Text>{formatTimer(sec)}</Text>
       <View style={styles.buttonWrapper}>
         <Button
-          title={"Start/Stop"}
+          title={"Start"}
           onPress={() => {
-            startStopHandler();
+            startHandler();
+          }}
+        />
+        <Button
+          title={"Stop"}
+          onPress={() => {
+            stopHandler();
           }}
         />
         <Button

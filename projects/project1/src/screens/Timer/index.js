@@ -1,22 +1,24 @@
 import React from "react";
 import { View, Button, Text } from "react-native";
-import { vibrate } from "../../../utils";
+import { formatTimer, vibration } from "../../../utils";
 import styles from "./styles";
+
 export function Timer(props) {
   const [sec, setSec] = React.useState(8);
   const [timerIsRunning, setTimerIsRunning] = React.useState(false);
   const [interval, setInter] = React.useState();
   const [isWorkTime, setIsWorkTime] = React.useState(true);
-
+  const WORK_TIME = 8;
+  const REST_TIME = 5;
   React.useEffect(() => {
     if (sec === 0) {
-      //vibrate()
+      vibration();
       if (isWorkTime) {
         setIsWorkTime(false);
-        setSec(5);
+        setSec(REST_TIME);
       } else {
         setIsWorkTime(true);
-        setSec(8);
+        setSec(WORK_TIME);
       }
     }
   }, [sec]);
@@ -36,15 +38,16 @@ export function Timer(props) {
   }
   function resetHandler() {
     startStopHandler();
+    setTimerIsRunning(true);
     if (isWorkTime) {
-      setSec(8);
+      setSec(WORK_TIME);
     } else {
-      setSec(5);
+      setSec(REST_TIME);
     }
   }
   return (
     <View style={styles.container}>
-      <Text>{sec}</Text>
+      <Text>{formatTimer(sec)}</Text>
       <View style={styles.buttonWrapper}>
         <Button
           title={"Start/Stop"}

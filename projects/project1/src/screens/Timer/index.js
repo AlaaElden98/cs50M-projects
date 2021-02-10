@@ -7,6 +7,20 @@ export function Timer(props) {
   const [timerIsRunning, setTimerIsRunning] = React.useState(false);
   const [interval, setInter] = React.useState();
   const [isWorkTime, setIsWorkTime] = React.useState(true);
+
+  React.useEffect(() => {
+    if (sec === 0) {
+      //vibrate()
+      if (isWorkTime) {
+        setIsWorkTime(false);
+        setSec(5);
+      } else {
+        setIsWorkTime(true);
+        setSec(8);
+      }
+    }
+  }, [sec]);
+
   const deacreaseSeconds = () => {
     setSec((prevSecond) => prevSecond - 1);
   };
@@ -20,6 +34,14 @@ export function Timer(props) {
       setTimerIsRunning(true);
     }
   }
+  function resetHandler() {
+    startStopHandler();
+    if (isWorkTime) {
+      setSec(8);
+    } else {
+      setSec(5);
+    }
+  }
   return (
     <View style={styles.container}>
       <Text>{sec}</Text>
@@ -30,7 +52,12 @@ export function Timer(props) {
             startStopHandler();
           }}
         />
-        <Button title={"Reset"} onPress={() => {}} />
+        <Button
+          title={"Reset"}
+          onPress={() => {
+            resetHandler();
+          }}
+        />
       </View>
     </View>
   );

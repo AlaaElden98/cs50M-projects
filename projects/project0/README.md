@@ -4,9 +4,9 @@ The goal of this project is to practice JavaScript and its paradigms by creating
 a TODO app. This app should be able to add TODOs and track the number of total
 TODOs as well as the number of unchecked TODOs.
 
-## Implementation
+## My solution
 
-(Checkout my solution)[https://cs50-project0-todoapp.netlify.app/]
+This is my implementation of the project. [Check it out](https://cs50-project0-todoapp.netlify.app/)
 
 ## Instructions
 

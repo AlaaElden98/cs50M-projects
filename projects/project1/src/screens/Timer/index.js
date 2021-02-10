@@ -2,25 +2,6 @@ import React from "react";
 import { View, Button, Text } from "react-native";
 import { formatTimer, vibration } from "../../../utils";
 import styles from "./styles";
-<<<<<<< HEAD
-export const Timer = (props) => {
-  let time = 25 * 60;
-  return (
-    <View style={styles.container}>
-      <TimerCountDown time={time} />
-      <View style={styles.buttonWrapper}>
-        <AppButton
-          title="Start"
-          clickHandler={() => ((time = 25 * 60), console.log(time))}
-        />
-        <AppButton
-          title="Stop"
-          clickHandler={() => ((time = 0), console.log(time))}
-        />
-        <AppButton
-          title="Reset"
-          clickHandler={() => ((time = 25 * 60), console.log(time))}
-=======
 
 export function Timer(props) {
   const WORK_TIME = 25 * 60; //25 min * 60 sec
@@ -85,7 +66,6 @@ export function Timer(props) {
           onPress={() => {
             resetHandler();
           }}
->>>>>>> 00123421249ae0c65df32fa132b00f33d4a7d7cf
         />
       </View>
     </View>
